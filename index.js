@@ -43,10 +43,10 @@ const winningOutcomes = [ //array of winning outcomes
 const endGame = () => {
     console.log("Game Over!");
 
-    ${".box"}.css('pointer-events', "none"); //calls out all objects with box class and makes them not clickable;
+    $(".box").css('pointer-events', "none"); //calls out all objects with box class and makes them not clickable;
 
-    ${"#p1"}.removeClass("bg-light border border-info");
-    ${"#p2"}.removeClass("bg-light border border-info");
+    $("#p1").removeClass("bg-light border border-info");
+    $("#p2").removeClass("bg-light border border-info");
 };
 
 const checkWinner = (currentPlayer, a, b, c) => {
@@ -69,8 +69,8 @@ const checkWinner = (currentPlayer, a, b, c) => {
             currentPlayer = "player 2";
         }
 
-        ${"alert"}.text(`Game Over! ${currentPlayer}`);
-        ${"alertWinner"}.show();
+        $("alert").text(`Game Over! ${currentPlayer}`);
+        $("#alertWinner").show();
 
 
         endGame();
@@ -79,18 +79,18 @@ const checkWinner = (currentPlayer, a, b, c) => {
 };
 
 const checkOutcomes = () => {
-    checkWinner(currentPlayer, ...winningOutcomes(0)); //spreads the elementings of winning outcomes between the a b and c conditionals for the checkWinner function
-    checkWinner(currentPlayer, ...winningOutcomes(1)); //does so for all 9 elements in the array
-    checkWinner(currentPlayer, ...winningOutcomes(2));
-    checkWinner(currentPlayer, ...winningOutcomes(3));
-    checkWinner(currentPlayer, ...winningOutcomes(4));
-    checkWinner(currentPlayer, ...winningOutcomes(5));
-    checkWinner(currentPlayer, ...winningOutcomes(6));
-    checkWinner(currentPlayer, ...winningOutcomes(7));
+    checkWinner(currentPlayer, ...winningOutcomes[0]); //spreads the elementings of winning outcomes between the a b and c conditionals for the checkWinner function
+    checkWinner(currentPlayer, ...winningOutcomes[1]); //does so for all 9 elements in the array
+    checkWinner(currentPlayer, ...winningOutcomes[2]);
+    checkWinner(currentPlayer, ...winningOutcomes[3]);
+    checkWinner(currentPlayer, ...winningOutcomes[4]);
+    checkWinner(currentPlayer, ...winningOutcomes[5]);
+    checkWinner(currentPlayer, ...winningOutcomes[6]);
+    checkWinner(currentPlayer, ...winningOutcomes[7]);
 
     if (turn === 9 && winner === false) {
         endGame();
-        ${"#alertDraw"}.show();
+        $("#alertDraw").show();
     } 
 };
 
@@ -100,7 +100,7 @@ const startGame = () => {
     currentPlayer = player1;
     console.log(currentPlayer);
 
-    ${'#p1'}.addClass("bg-light border border-info"); //creates class border and adds descriptive info for player1 
+    $('#p1').addClass("bg-light border border-info"); //creates class border and adds descriptive info for player1 
 
 
 
@@ -120,18 +120,20 @@ const startGame = () => {
         }
 
         if (winner === false) {
-
-        }
+            
         
-        if(currentPlayer === player1) { //if current player is equal truly to player1 
+        
+            if (currentPlayer === player1) { //if current player is equal truly to player1 
             currentPlayer = player2; //become player 2
             console.log(turn++); //turn increment once
-            ${'#p2'}.addClass("bg-light border border-info"); //adding class to the player 2 class
-            ${'#p1'}.removeClass("bg-light border border-info");
-        } else { //otherwise
+            $('#p2').addClass("bg-light border border-info"); //adding class to the player 2 class
+            $('#p1').removeClass("bg-light border border-info");
+            } else { //otherwise
             currentPlayer = player1; //currentplayer becomes player1
-            ${'#p1'}.addClass("bg-light border border-info");
-            ${'#p2'}.removeClass("bg-light border border-info");
+            console.log(turn++)
+            $('#p1').addClass("bg-light border border-info");
+            $('#p2').removeClass("bg-light border border-info");
+            }
         }
     })
 };
